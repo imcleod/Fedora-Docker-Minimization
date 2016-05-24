@@ -1,0 +1,12 @@
+<template>
+    <name>fedora-rawhide-excludeWeakdeps</name>
+    <os>
+        <name>Fedora</name>
+        <version>666</version>
+        <arch>x86_64</arch>
+        <install type='url'>
+            <url>http://mirror.nexcess.net/fedora/development/rawhide/Server/x86_64/os/</url>
+        </install>
+        <rootpw>rrrrr</rootpw>
+    </os>
+</template>

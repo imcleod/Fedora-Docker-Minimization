@@ -28,6 +28,10 @@ part / --size 3000 --fstype ext4
 network --bootproto=dhcp --device=link --activate --onboot=on
 reboot
 
+url --url "http://yselkowitz.fedorapeople.org/f24-minimization"
+repo --name="minimization" --baseurl=http://yselkowitz.fedorapeople.org/f24-minimization
+
+
 %packages --excludedocs --instLangs=en --nocore
 coreutils-single
 bash
@@ -39,7 +43,9 @@ dnf-yum  # https://fedorahosted.org/fesco/ticket/1312#comment:29
 sssd-client
 #fakesystemd #TODO: waiting for review https://bugzilla.redhat.com/show_bug.cgi?id=1118740
 -kernel
-
+-pinentry
+-gnupg2-smime
+-cracklib-dicts
 
 %end
 
@@ -78,11 +84,11 @@ rm -rf /var/cache/yum/*
 rm -f /tmp/ks-script*
 
 #Make it easier for systemd to run in Docker container
-cp /usr/lib/systemd/system/dbus.service /etc/systemd/system/
-sed -i 's/OOMScoreAdjust=-900//' /etc/systemd/system/dbus.service
+#cp /usr/lib/systemd/system/dbus.service /etc/systemd/system/
+#sed -i 's/OOMScoreAdjust=-900//' /etc/systemd/system/dbus.service
 
 #Mask mount units and getty service so that we don't get login prompt
-systemctl mask systemd-remount-fs.service dev-hugepages.mount sys-fs-fuse-connections.mount systemd-logind.service getty.target console-getty.service
+#systemctl mask systemd-remount-fs.service dev-hugepages.mount sys-fs-fuse-connections.mount systemd-logind.service getty.target console-getty.service
 
 rm -f /etc/machine-id
 
