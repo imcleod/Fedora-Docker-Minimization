@@ -30,6 +30,7 @@ reboot
 
 url --url "http://yselkowitz.fedorapeople.org/rawhide-minimization"
 repo --name="minimization" --baseurl=http://yselkowitz.fedorapeople.org/rawhide-minimization
+repo --name="rest-of-rawhide" --baseurl=http://mirror.nexcess.net/fedora/development/rawhide/Server/x86_64/os --excludepkgs=dnf,glib2,glib2-devel,gmp,gmp-c++
 
 %packages --excludedocs --instLangs=en --nocore --excludeWeakdeps
 coreutils-single
